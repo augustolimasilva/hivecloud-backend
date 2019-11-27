@@ -4,6 +4,7 @@ import com.hivecloud.hivecloudbackend.domain.Transportadora;
 import com.hivecloud.hivecloudbackend.exception.CustomException;
 import com.hivecloud.hivecloudbackend.repository.TransportadoraRepository;
 import com.hivecloud.hivecloudbackend.service.TransportadoraService;
+import com.hivecloud.hivecloudbackend.util.Constantes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +13,6 @@ import java.util.Optional;
 
 @Service
 public class TransportadoraServiceImpl implements TransportadoraService {
-
-    private static final String TRANSPORTADORA_NAO_ENCONTRADA = "Transportadora não encontrada.";
 
     @Autowired
     TransportadoraRepository transportadoraRepository;
@@ -30,7 +29,7 @@ public class TransportadoraServiceImpl implements TransportadoraService {
         if(transp.isPresent()) {
             return transportadoraRepository.save(transportadora);
         }else {
-            throw new CustomException(TRANSPORTADORA_NAO_ENCONTRADA);
+            throw new CustomException(Constantes.TRANSPORTADORA_NAO_ENCONTRADA);
         }
     }
 
@@ -45,9 +44,9 @@ public class TransportadoraServiceImpl implements TransportadoraService {
 
         if(transportadora.isPresent()) {
             transportadoraRepository.deleteById(id);
-            return "Registro excluído com sucesso";
+            return Constantes.REGISTRO_EXCLUIDO_SUCESSO;
         }else {
-            throw new CustomException(TRANSPORTADORA_NAO_ENCONTRADA);
+            throw new CustomException(Constantes.TRANSPORTADORA_NAO_ENCONTRADA);
         }
     }
 }
