@@ -1,16 +1,19 @@
 package com.hivecloud.hivecloudbackend.service.impl;
 
 import com.hivecloud.hivecloudbackend.domain.Transportadora;
-import com.hivecloud.hivecloudbackend.exception.TransportadoraNaoEncontradaException;
+import com.hivecloud.hivecloudbackend.exception.CustomException;
 import com.hivecloud.hivecloudbackend.repository.TransportadoraRepository;
 import com.hivecloud.hivecloudbackend.service.TransportadoraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TransportadoraServiceImpl implements TransportadoraService {
+
+    private static final String TRANSPORTADORA_NAO_ENCONTRADA = "Transportadora não encontrada.";
 
     @Autowired
     TransportadoraRepository transportadoraRepository;
@@ -22,9 +25,13 @@ public class TransportadoraServiceImpl implements TransportadoraService {
 
     @Override
     public Transportadora alterarTransportadora(Transportadora transportadora) {
-        return transportadoraRepository.findById(transportadora.getId())
-                .map(obj -> transportadoraRepository.save(transportadora))
-                .orElseThrow(TransportadoraNaoEncontradaException::new);
+        Optional<Transportadora> transp = transportadoraRepository.findById(transportadora.getId());
+
+        if(transp.isPresent()) {
+            return transportadoraRepository.save(transportadora);
+        }else {
+            throw new CustomException(TRANSPORTADORA_NAO_ENCONTRADA);
+        }
     }
 
     @Override
@@ -34,7 +41,13 @@ public class TransportadoraServiceImpl implements TransportadoraService {
 
     @Override
     public String excluirPorId(Long id) {
-        transportadoraRepository.deleteById(id);
-        return "Transportadora excluída.";
+        Optional<Transportadora> transportadora = transportadoraRepository.findById(id);
+
+        if(transportadora.isPresent()) {
+            transportadoraRepository.deleteById(id);
+            return "Registro excluído com sucesso";
+        }else {
+            throw new CustomException(TRANSPORTADORA_NAO_ENCONTRADA);
+        }
     }
 }

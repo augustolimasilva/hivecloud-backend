@@ -1,4 +1,4 @@
-package com.hivecloud.hivecloudbackend.exception.advice;
+package com.hivecloud.hivecloudbackend.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
