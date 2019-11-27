@@ -5,11 +5,12 @@ import com.hivecloud.hivecloudbackend.domain.dto.TransportadoraDTO;
 import com.hivecloud.hivecloudbackend.service.TransportadoraService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import com.hivecloud.hivecloudbackend.response.Response;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/transportadora")
@@ -19,24 +20,24 @@ public class TransportadoraController {
     TransportadoraService transportadoraService;
 
     @PostMapping
-    public ResponseEntity<Response> inserirTransportadora(@RequestBody @Valid TransportadoraDTO transportadoraDTO){
+    public ResponseEntity<Transportadora> inserirTransportadora(@RequestBody @Valid TransportadoraDTO transportadoraDTO){
         Transportadora transportadora = new ModelMapper().map(transportadoraDTO, Transportadora.class);
-        return ResponseEntity.ok(new Response(transportadoraService.inserirTransportadora(transportadora)));
+        return new ResponseEntity<>(transportadoraService.inserirTransportadora(transportadora), HttpStatus.CREATED);
     }
 
     @PutMapping
-    public ResponseEntity<Response> alterarTransportadora(@RequestBody @Valid TransportadoraDTO transportadoraDTO){
+    public ResponseEntity<Transportadora> alterarTransportadora(@RequestBody @Valid TransportadoraDTO transportadoraDTO){
         Transportadora transportadora = new ModelMapper().map(transportadoraDTO, Transportadora.class);
-        return ResponseEntity.ok(new Response(transportadoraService.alterarTransportadora(transportadora)));
+        return new ResponseEntity<>(transportadoraService.alterarTransportadora(transportadora), HttpStatus.OK);
     }
 
     @GetMapping
-    public ResponseEntity<Response> listarTransportadoras(){
-        return ResponseEntity.ok(new Response(transportadoraService.listarTransportadoras()));
+    public ResponseEntity<List<Transportadora>> listarTransportadoras(){
+        return new ResponseEntity<>(transportadoraService.listarTransportadoras(), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Response> excluirPorCodigo(@PathVariable Long id){
-        return ResponseEntity.ok(new Response(transportadoraService.excluirPorId(id)));
+    public ResponseEntity<String> excluirPorCodigo(@PathVariable Long id){
+        return new ResponseEntity<>(transportadoraService.excluirPorId(id),HttpStatus.OK);
     }
 }
