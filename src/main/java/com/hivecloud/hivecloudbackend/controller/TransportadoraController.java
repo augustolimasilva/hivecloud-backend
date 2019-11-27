@@ -3,6 +3,7 @@ package com.hivecloud.hivecloudbackend.controller;
 import com.hivecloud.hivecloudbackend.domain.Transportadora;
 import com.hivecloud.hivecloudbackend.domain.dto.TransportadoraDTO;
 import com.hivecloud.hivecloudbackend.service.TransportadoraService;
+import com.hivecloud.hivecloudbackend.util.Response;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,10 +26,10 @@ public class TransportadoraController {
         return new ResponseEntity<>(transportadoraService.inserirTransportadora(transportadora), HttpStatus.CREATED);
     }
 
-    @PutMapping
-    public ResponseEntity<Transportadora> alterarTransportadora(@RequestBody @Valid TransportadoraDTO transportadoraDTO){
+    @PutMapping("/{id}")
+    public ResponseEntity<Transportadora> alterarTransportadora(@RequestBody @Valid TransportadoraDTO transportadoraDTO, @PathVariable Long id){
         Transportadora transportadora = new ModelMapper().map(transportadoraDTO, Transportadora.class);
-        return new ResponseEntity<>(transportadoraService.alterarTransportadora(transportadora), HttpStatus.OK);
+        return new ResponseEntity<>(transportadoraService.alterarTransportadora(transportadora, id), HttpStatus.OK);
     }
 
     @GetMapping
@@ -37,7 +38,7 @@ public class TransportadoraController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> excluirPorCodigo(@PathVariable Long id){
+    public ResponseEntity<Response> excluirPorCodigo(@PathVariable Long id){
         return new ResponseEntity<>(transportadoraService.excluirPorId(id),HttpStatus.OK);
     }
 }

@@ -22,25 +22,23 @@ public class Transportadora {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Email
     @Column(name = "email", length = 100, nullable = false)
     private String email;
 
     @Column(name = "nome", length = 300, nullable = false)
     private String nome;
 
-    @CNPJ
     @Column(name = "empresa", length = 14, nullable = false)
     private String empresa;
 
     @Column(name = "telefone", length = 10, nullable = false)
-    private int telefone;
+    private long telefone;
 
     @Column(name = "celular", length = 11, nullable = true)
-    private int celular;
+    private long celular;
 
     @Column(name = "whatsapp", length = 11, nullable = true)
-    private int whatsapp;
+    private long whatsapp;
 
     @Column(name = "modalidade", length = 20, nullable = false)
     private String modalidade;
@@ -49,7 +47,7 @@ public class Transportadora {
     private String rua;
 
     @Column(name = "numero", length = 10, nullable = false)
-    private int numero;
+    private long numero;
 
     @Column(name = "bairro", length = 100, nullable = false)
     private String bairro;

@@ -5,7 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.br.CNPJ;
 
+import javax.validation.constraints.Email;
 import java.sql.Blob;
 
 @Getter
@@ -15,19 +17,21 @@ import java.sql.Blob;
 public class TransportadoraDTO {
 
     @Length(min = 10, max = 100, message =  "{transportadora.email.length}")
+    @Email(message = "{transportadora.email.msg}")
     private String email;
 
     @Length(min = 4, max = 300, message =  "{transportadora.nome.length}")
     private String nome;
 
     @Length(min = 14, max = 14, message =  "{transportadora.cnpj.length}")
+    @CNPJ(message = "{transportadora.cnpj.msg}")
     private String empresa;
 
-    private int telefone;
+    private long telefone;
 
-    private int celular;
+    private long celular;
 
-    private int whatsapp;
+    private long whatsapp;
 
     @Length(min = 5, max = 20, message =  "{transportadora.modalidade.length}")
     private String modalidade;
@@ -35,7 +39,7 @@ public class TransportadoraDTO {
     @Length(min = 5, max = 200, message =  "{transportadora.rua.length}")
     private String rua;
 
-    private int numero;
+    private long numero;
 
     @Length(min = 3, max = 100, message =  "{transportadora.bairro.length}")
     private String bairro;
