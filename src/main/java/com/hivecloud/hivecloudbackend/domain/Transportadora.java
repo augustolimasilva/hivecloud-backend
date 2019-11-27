@@ -32,13 +32,13 @@ public class Transportadora {
     private String empresa;
 
     @Column(name = "telefone", length = 10, nullable = false)
-    private long telefone;
+    private String telefone;
 
     @Column(name = "celular", length = 11, nullable = true)
-    private long celular;
+    private String celular;
 
     @Column(name = "whatsapp", length = 11, nullable = true)
-    private long whatsapp;
+    private String whatsapp;
 
     @Column(name = "modalidade", length = 20, nullable = false)
     private String modalidade;
@@ -47,7 +47,7 @@ public class Transportadora {
     private String rua;
 
     @Column(name = "numero", length = 10, nullable = false)
-    private long numero;
+    private String numero;
 
     @Column(name = "bairro", length = 100, nullable = false)
     private String bairro;

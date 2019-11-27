@@ -8,6 +8,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CNPJ;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
 import java.sql.Blob;
 
 @Getter
@@ -20,18 +21,21 @@ public class TransportadoraDTO {
     @Email(message = "{transportadora.email.msg}")
     private String email;
 
-    @Length(min = 4, max = 300, message =  "{transportadora.nome.length}")
+    @Length(min = 4, max = 300, message = "{transportadora.nome.length}")
     private String nome;
 
-    @Length(min = 14, max = 14, message =  "{transportadora.cnpj.length}")
+    @Length(min = 14, max = 14, message = "{transportadora.cnpj.length}")
     @CNPJ(message = "{transportadora.cnpj.msg}")
     private String empresa;
 
-    private long telefone;
+    @Length(min = 10, max = 10, message = "{transportadora.telefone.length}")
+    private String telefone;
 
-    private long celular;
+    @Length(max = 11, message = "{transportadora.celular.length}")
+    private String celular;
 
-    private long whatsapp;
+    @Length(max = 11, message = "{transportadora.whatsapp.length}")
+    private String whatsapp;
 
     @Length(min = 5, max = 20, message =  "{transportadora.modalidade.length}")
     private String modalidade;
@@ -39,7 +43,8 @@ public class TransportadoraDTO {
     @Length(min = 5, max = 200, message =  "{transportadora.rua.length}")
     private String rua;
 
-    private long numero;
+    @Length(min = 1, max = 10, message = "{transportadora.numero.length}")
+    private String numero;
 
     @Length(min = 3, max = 100, message =  "{transportadora.bairro.length}")
     private String bairro;
