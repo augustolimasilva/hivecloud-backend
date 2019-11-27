@@ -5,9 +5,11 @@ import com.hivecloud.hivecloudbackend.exception.TransportadoraNaoEncontradaExcep
 import com.hivecloud.hivecloudbackend.repository.TransportadoraRepository;
 import com.hivecloud.hivecloudbackend.service.TransportadoraService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TransportadoraServiceImpl implements TransportadoraService {
 
     @Autowired
@@ -33,6 +35,6 @@ public class TransportadoraServiceImpl implements TransportadoraService {
     @Override
     public String excluirPorId(Long id) {
         transportadoraRepository.deleteById(id);
-        return "Fornecedor excluído.";
+        return "Transportadora excluída.";
     }
 }

@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Column;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.sql.Blob;
 
 public class TransportadoraDTO {
@@ -17,13 +18,10 @@ public class TransportadoraDTO {
     @Length(min = 14, max = 14, message =  "{fornecedor.cnpj.length}")
     private String empresa;
 
-    @Length(min = 10, max = 10, message =  "{fornecedor.telefone.length}")
     private int telefone;
 
-    @Length(max = 11, message =  "{fornecedor.celular.length}")
     private int celular;
 
-    @Length(max = 11, message =  "{fornecedor.whatsapp.length}")
     private int whatsapp;
 
     @Length(min = 5, max = 20, message =  "{fornecedor.modalidade.length}")
@@ -32,7 +30,6 @@ public class TransportadoraDTO {
     @Length(min = 5, max = 200, message =  "{fornecedor.rua.length}")
     private String rua;
 
-    @Length(min = 1, max = 10, message =  "{fornecedor.numero.length}")
     private int numero;
 
     @Length(min = 3, max = 100, message =  "{fornecedor.bairro.length}")
