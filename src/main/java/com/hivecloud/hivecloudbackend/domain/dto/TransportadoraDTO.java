@@ -40,6 +40,9 @@ public class TransportadoraDTO {
     @Length(min = 5, max = 20, message =  "{transportadora.modalidade.length}")
     private String modalidade;
 
+    @Length(max = 8, message = "{transportadora.cep.length")
+    private String cep;
+
     @Length(min = 5, max = 200, message =  "{transportadora.rua.length}")
     private String rua;
 

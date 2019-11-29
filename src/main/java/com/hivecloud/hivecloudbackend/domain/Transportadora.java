@@ -43,6 +43,9 @@ public class Transportadora {
     @Column(name = "modalidade", length = 20, nullable = false)
     private String modalidade;
 
+    @Column(name = "cep", length = 8, nullable = true)
+    private String cep;
+
     @Column(name = "rua", length = 200, nullable = false)
     private String rua;
 
