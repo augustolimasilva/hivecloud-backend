@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -27,7 +28,7 @@ public class TransportadoraServiceImpl implements TransportadoraService {
     @Override
     public Transportadora alterarTransportadora(Transportadora transportadora, Long id) {
 
-        if(id == null){
+        if(Objects.isNull(id)){
             throw new CustomException(Constantes.ID_OBRIGATORIO);
         }
 
