@@ -42,4 +42,9 @@ public class TransportadoraController {
     public ResponseEntity<Response> excluirPorCodigo(@PathVariable Long id){
         return new ResponseEntity<>(transportadoraService.excluirPorId(id),HttpStatus.OK);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Transportadora> pesquisarPorCodigo(@PathVariable Long id){
+        return new ResponseEntity<>(transportadoraService.pesquisarPorId(id), HttpStatus.OK);
+    }
 }

@@ -4,6 +4,7 @@ import com.hivecloud.hivecloudbackend.domain.Transportadora;
 import com.hivecloud.hivecloudbackend.util.Response;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface TransportadoraService {
 
@@ -14,4 +15,6 @@ public interface TransportadoraService {
     List<Transportadora> listarTransportadoras();
 
     Response excluirPorId(Long id);
+
+    Transportadora pesquisarPorId(Long id);
 }

@@ -1,6 +1,5 @@
 package com.hivecloud.hivecloudbackend.service.impl;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.hivecloud.hivecloudbackend.domain.Transportadora;
 import com.hivecloud.hivecloudbackend.exception.CustomException;
 import com.hivecloud.hivecloudbackend.repository.TransportadoraRepository;
@@ -58,5 +57,14 @@ public class TransportadoraServiceImpl implements TransportadoraService {
         }else {
             throw new CustomException(Constantes.TRANSPORTADORA_NAO_ENCONTRADA);
         }
+    }
+
+    @Override
+    public Transportadora pesquisarPorId(Long id) {
+        if(Objects.isNull(id)){
+            throw new CustomException(Constantes.ID_OBRIGATORIO);
+        }
+
+        return transportadoraRepository.findById(id).get();
     }
 }
