@@ -1,2 +1,3 @@
-# hivecloud-backend
-Projeto Back end de Sistema de transportadoras
+# Projeto Hivecloud - Sistema de Transportadoras
+
+Api utilizando Spring Boot e Maven
