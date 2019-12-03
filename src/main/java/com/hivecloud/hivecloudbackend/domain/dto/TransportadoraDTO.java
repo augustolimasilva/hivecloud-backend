@@ -8,7 +8,6 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CNPJ;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Size;
 import java.sql.Blob;
 
 @Getter
